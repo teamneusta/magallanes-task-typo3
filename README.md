@@ -1,5 +1,8 @@
 # Magallanes TYPO3 Tasks #
 
+[![Build Status](https://travis-ci.org/teamneusta/magallanes-task-typo3.svg?branch=master)](https://travis-ci.org/teamneusta/magallanes-task-typo3)
+[![Coverage Status](https://coveralls.io/repos/github/teamneusta/magallanes-task-typo3/badge.svg?branch=master)](https://coveralls.io/github/teamneusta/magallanes-task-typo3?branch=master)
+
 ### What's Magallanes TYPO3 Tasks? ###
 
 **Magallanes TYPO3 Tasks** are tasks for easy deployment with Magallaes 3.
