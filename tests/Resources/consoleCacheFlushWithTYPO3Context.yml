@@ -1,0 +1,16 @@
+magephp:
+    log_dir: /tmp
+    typo3:
+        context: Production/Prod
+    environments:
+        test:
+            user: tester
+            host_path: /var/www/test
+            exclude:
+                - ./var/cache/*
+                - ./var/log/*
+                - ./web/app_dev.php
+            hosts:
+                - testhost
+            on-deploy:
+                - 'TeamNeusta\Magallanes\Task\TYPO3\Console\CacheFlushTask'

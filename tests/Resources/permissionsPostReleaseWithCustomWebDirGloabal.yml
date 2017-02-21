@@ -1,0 +1,17 @@
+magephp:
+    log_dir: /tmp
+    typo3:
+        web-dir: CustomWebDir
+    environments:
+        test:
+            releases: 1
+            user: tester
+            host_path: /var/www/test
+            exclude:
+                - ./var/cache/*
+                - ./var/log/*
+                - ./web/app_dev.php
+            hosts:
+                - testhost
+            post-release:
+                - 'TeamNeusta\Magallanes\Task\TYPO3\PermissionsTask'

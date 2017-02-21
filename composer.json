@@ -1,0 +1,38 @@
+{
+    "name": "teamneusta/magallanes-task-typo3",
+    "description": "Magallanes 3 tasks for TYPO3",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "type": "library",
+    "keywords": ["deployment", "typo3", "magallanes"],
+    "authors": [
+        {
+            "name": "Benjamin Kluge",
+            "email": "b.kluge@neusta.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "andres-montanez/magallanes": ">=3.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.0.*",
+        "satooshi/php-coveralls": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TeamNeusta\\Magallanes\\Task\\TYPO3\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TeamNeusta\\Magallanes\\Tests\\Task\\TYPO3\\": "tests/",
+            "Mage\\Tests\\": "vendor/andres-montanez/magallanes/tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
