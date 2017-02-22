@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/teamneusta/magallanes-task-typo3.svg?branch=master)](https://travis-ci.org/teamneusta/magallanes-task-typo3)
 [![Coverage Status](https://coveralls.io/repos/github/teamneusta/magallanes-task-typo3/badge.svg?branch=master)](https://coveralls.io/github/teamneusta/magallanes-task-typo3?branch=master)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/92ba9fca-06a2-4e4f-a8f7-75503dcb01b5/mini.png)](https://insight.sensiolabs.com/projects/92ba9fca-06a2-4e4f-a8f7-75503dcb01b5)
 
 ### What's Magallanes TYPO3 Tasks? ###
 
