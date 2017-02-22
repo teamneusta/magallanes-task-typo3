@@ -3,13 +3,13 @@
 [![Build Status](https://travis-ci.org/teamneusta/magallanes-task-typo3.svg?branch=master)](https://travis-ci.org/teamneusta/magallanes-task-typo3)
 [![Coverage Status](https://coveralls.io/repos/github/teamneusta/magallanes-task-typo3/badge.svg?branch=master)](https://coveralls.io/github/teamneusta/magallanes-task-typo3?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/teamneusta/magallanes-task-typo3/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/teamneusta/magallanes-task-typo3/?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/92ba9fca-06a2-4e4f-a8f7-75503dcb01b5/mini.png)](https://insight.sensiolabs.com/projects/92ba9fca-06a2-4e4f-a8f7-75503dcb01b5)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/877b9548-bbee-4a6c-8a49-63243f445266/mini.png)](https://insight.sensiolabs.com/projects/877b9548-bbee-4a6c-8a49-63243f445266)
 [![Latest Stable Version](https://img.shields.io/packagist/v/teamneusta/magallanes-task-typo3.svg?label=stable)](https://packagist.org/packages/teamneusta/magallanes-task-typo3)
 [![Latest Stable Version](https://img.shields.io/packagist/l/teamneusta/magallanes-task-typo3.svg?label=stable)](https://packagist.org/packages/teamneusta/magallanes-task-typo3)
 
 ### What's Magallanes TYPO3 Tasks? ###
 
-**Magallanes TYPO3 Tasks** are tasks for easy deployment with Magallaes 3.
+**Magallanes TYPO3 Tasks** are tasks for easy deployment with Magallanes 3.
 
 ### Installing ###
 
