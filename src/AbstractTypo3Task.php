@@ -31,6 +31,40 @@ abstract class AbstractTypo3Task extends AbstractTask
     protected $namePrefix = 'typo3/';
 
     /**
+     * name
+     *
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * description
+     *
+     * @var string
+     */
+    protected $description;
+
+    /**
+     * getName
+     *
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->namePrefix.$this->name;
+    }
+
+    /**
+     * getDescription
+     *
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
      * getContextCommand
      *
      * @param $cmd
@@ -57,17 +91,13 @@ abstract class AbstractTypo3Task extends AbstractTask
      */
     protected function getOptions(array $defaults): array
     {
-        $userGlobalOptions = $this->runtime->getConfigOption('typo3', []);
-        $userEnvOptions = $this->runtime->getEnvOption('typo3', []);
         $options = array_merge(
             ['context' => null],
             $defaults,
-            (is_array($userGlobalOptions) ? $userGlobalOptions : []),
-            (is_array($userEnvOptions) ? $userEnvOptions : []),
-            $this->options
+            $this->runtime->getMergedOption('typo3')
         );
 
-        return $options;
+        return array_filter($options);
     }
 
     /**

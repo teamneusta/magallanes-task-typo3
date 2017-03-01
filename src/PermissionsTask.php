@@ -21,34 +21,28 @@ namespace TeamNeusta\Magallanes\Task\TYPO3;
 class PermissionsTask extends AbstractTypo3Task
 {
     /**
+     * name
+     *
+     * @var string
+     */
+    protected $name = 'permissions';
+
+    /**
+     * description
+     *
+     * @var string
+     */
+    protected $description = '[TYPO3] TYPO3 permissions task';
+
+    /**
      * permissions
      *
      * @var array
      */
     protected $permissions = [
-        '/typo3conf/PackageStates.php' => 2775,
+        '/typo3conf/PackageStates.php'      => 2775,
         '/typo3conf/LocalConfiguration.php' => 2775,
     ];
-
-    /**
-     * getName
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->namePrefix.'permissions';
-    }
-
-    /**
-     * getDescription
-     *
-     * @return string
-     */
-    public function getDescription(): string
-    {
-        return '[TYPO3] TYPO3 permissions task';
-    }
 
     /**
      * execute
@@ -58,6 +52,7 @@ class PermissionsTask extends AbstractTypo3Task
     public function execute(): bool
     {
         $options = $this->getOptions(['web-dir' => 'web']);
+        $process = null;
         foreach ($this->permissions as $path => $permission) {
             $command = sprintf('chmod -f %s "%s"', $permission, $options['web-dir'].$path);
             $process = $this->executeCommand($command);

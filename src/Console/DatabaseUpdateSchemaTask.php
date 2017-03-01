@@ -21,24 +21,18 @@ namespace TeamNeusta\Magallanes\Task\TYPO3\Console;
 class DatabaseUpdateSchemaTask extends AbstractConsoleTask
 {
     /**
-     * getName
+     * name
      *
-     * @return string
+     * @var string
      */
-    public function getName(): string
-    {
-        return $this->namePrefix.'console-database-update-schema';
-    }
+    protected $name = 'console-database-update-schema';
 
     /**
-     * getDescription
+     * description
      *
-     * @return string
+     * @var string
      */
-    public function getDescription(): string
-    {
-        return '[TYPO3] TYPO3 console update schema task';
-    }
+    protected $description = '[TYPO3] TYPO3 console update schema task';
 
     /**
      * execute

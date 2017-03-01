@@ -21,24 +21,18 @@ namespace TeamNeusta\Magallanes\Task\TYPO3\Console;
 class CacheFlushTask extends AbstractConsoleTask
 {
     /**
-     * getName
+     * name
      *
-     * @return string
+     * @var string
      */
-    public function getName(): string
-    {
-        return $this->namePrefix.'console-cache-flush';
-    }
+    protected $name = 'console-cache-flush';
 
     /**
-     * getDescription
+     * description
      *
-     * @return string
+     * @var string
      */
-    public function getDescription(): string
-    {
-        return '[TYPO3] TYPO3 console cache task';
-    }
+    protected $description = '[TYPO3] TYPO3 console cache task';
 
     /**
      * execute
