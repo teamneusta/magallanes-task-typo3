@@ -90,3 +90,19 @@ Update database schema by global definition:
     on-deploy:
         - 'TeamNeusta\Magallanes\Task\TYPO3\Console\DatabaseUpdateSchemaTask'
 ```
+
+#### TYPO3 install generatepackagestates task ####
+
+Default usage (--activate-default=true):
+```yaml
+    on-deploy:
+        - 'TeamNeusta\Magallanes\Task\TYPO3\Console\InstallGeneratePackagestatesTask'
+```
+
+#### TYPO3 install fixfolderstructure task ####
+
+Default usage:
+```yaml
+    on-deploy:
+        - 'TeamNeusta\Magallanes\Task\TYPO3\Console\InstallFixFolderStructureTask'
+```
