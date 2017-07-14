@@ -25,14 +25,14 @@ class InstallFixFolderStructureTask extends AbstractConsoleTask
      *
      * @var string
      */
-    protected $name = 'console-generate-packagestates';
+    protected $name = 'console-install-fixfolderstructure';
 
     /**
      * description
      *
      * @var string
      */
-    protected $description = '[TYPO3] TYPO3 console generate packagestates task';
+    protected $description = '[TYPO3] TYPO3 console fixfolderstructure task';
 
     /**
      * execute
