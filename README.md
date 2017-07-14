@@ -91,9 +91,29 @@ Update database schema by global definition:
         - 'TeamNeusta\Magallanes\Task\TYPO3\Console\DatabaseUpdateSchemaTask'
 ```
 
-#### TYPO3 install generatepackagestates task ####
+#### TYPO3 install generatepackagestates task (deprecated) ####
+New way to use setup your TYPO3 composer.json with follow scripts
+```json
+"scripts": {
+    "package-states": [
+        "@php vendor/helhum/typo3-console/Scripts/typo3cms install:generatepackagestates"
+    ],
+    "folder-structure": [
+        "@php vendor/helhum/typo3-console/Scripts/typo3cms install:fixfolderstructure"
+    ],
+    "ext-setup": [
+        "@php vendor/helhum/typo3-console/Scripts/typo3cms install:extensionsetupifpossible"
 
-Default usage (--activate-default=true):
+    ],
+    "post-autoload-dump": [
+        "@package-states",
+        "@folder-structure",
+        "@ext-setup"
+    ]
+}
+```
+
+Old way to use Default usage (--activate-default=true):
 ```yaml
     on-deploy:
         - 'TeamNeusta\Magallanes\Task\TYPO3\Console\InstallGeneratePackagestatesTask'
@@ -105,4 +125,47 @@ Default usage:
 ```yaml
     on-deploy:
         - 'TeamNeusta\Magallanes\Task\TYPO3\Console\InstallFixFolderStructureTask'
+```
+
+#### TYPO3 install extension setupactive task ####
+
+Default usage:
+```yaml
+    post-release:
+        - 'TeamNeusta\Magallanes\Task\TYPO3\Console\ExtensionSetupActiveTask'
+```
+
+#### Example ####
+
+```yaml
+magephp:
+    log_dir: ./Logs
+    composer:
+        path: /usr/bin/composer
+    typo3:
+        console: bin/typo3cms
+        force-flush-cache: true
+        database-update-schema-mode: '*.add,*.change'
+        web-dir: web
+    exclude:
+        - ./app/typo3temp
+        - ./app/fileadmin
+        - ./app/uploads
+    environments:
+        Production:
+            user: xxx
+            host_path: xxx
+            releases: 4
+            hosts:
+                - xxx
+            pre-deploy:
+                - composer/install: { flags: '--optimize-autoloader --no-dev --no-interaction --profile' }
+            on-deploy:
+            on-release:
+                - 'TeamNeusta\Magallanes\Task\TYPO3\Console\InstallFixFolderStructureTask'
+            post-release:
+                - 'TeamNeusta\Magallanes\Task\TYPO3\Console\DatabaseUpdateSchemaTask'
+                - 'TeamNeusta\Magallanes\Task\TYPO3\Console\ExtensionSetupActiveTask'
+            post-deploy:
+
 ```
