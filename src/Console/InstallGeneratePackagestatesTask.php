@@ -15,6 +15,7 @@ namespace TeamNeusta\Magallanes\Task\TYPO3\Console;
 /**
  * Class GeneratepackagestatesTask
  *
+ * @deprecated
  * @author Benjamin Kluge <b.kluge@neusta.de>
  * @package TeamNeusta\Magallanes\Task\TYPO3\Console
  */
