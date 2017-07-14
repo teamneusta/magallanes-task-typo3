@@ -17,7 +17,7 @@ Simply add the following dependency to your project’s composer.json file:
 
 ```json
     "require": {
-        "teamneusta/magallanes-task-typo3": "^1.0"
+        "teamneusta/magallanes-task-typo3": "^1.1"
     }
 ```
 Finally you can use **Magallanes TYPO3 Tasks** in your mage.yml
