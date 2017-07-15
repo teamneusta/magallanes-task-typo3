@@ -74,17 +74,16 @@ class SwitchTask extends AbstractTypo3Task
      *
      * @param string $from
      * @param string $to
-     * @return bool
+     * @return void
      */
-    protected function moveFile(string $from, string $to) : bool
+    protected function moveFile(string $from, string $to)
     {
         if (file_exists($from)) {
             $moveTaks = new MoveTask();
             $moveTaks->setRuntime($this->runtime);
             $moveTaks->setOptions($this->getOptions(['from' => $from, 'to' => $to]));
-            return $moveTaks->execute();
+            $moveTaks->execute();
         }
-        return false;
     }
 
     /**
@@ -92,17 +91,16 @@ class SwitchTask extends AbstractTypo3Task
      *
      * @param string $from
      * @param string $to
-     * @return bool
+     * @return void
      */
-    protected function copyFile(string $from, string $to) : bool
+    protected function copyFile(string $from, string $to)
     {
         if (file_exists($from)) {
             $copyTaks = new CopyTask();
             $copyTaks->setRuntime($this->runtime);
             $copyTaks->setOptions($this->getOptions(['from' => $from, 'to' => $to]));
-            return $copyTaks->execute();
+            $copyTaks->execute();
         }
-        return false;
     }
 
     /**

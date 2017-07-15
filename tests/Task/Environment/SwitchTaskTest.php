@@ -41,6 +41,7 @@ class SwitchTaskTest extends TestCase
                     'mv  "/tmp/typo3conf/LocalConfiguration.php" "/tmp/LocalConfiguration.php"',
                     'cp -p "/tmp/LocalConfiguration.test.php" "/tmp/typo3conf/LocalConfiguration.php"',
                     'rsync -e "ssh -p 22 -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" -avz --exclude=.git --exclude=./var/cache/* --exclude=./var/log/* --exclude=./web/app_dev.php ./ tester@testhost:/var/www/test',
+                    'mv  "/tmp/LocalConfiguration.php" "/tmp/typo3conf/LocalConfiguration.php"',
                 ]
             ]
         ];
@@ -55,14 +56,15 @@ class SwitchTaskTest extends TestCase
      * @param array $expectedCommands
      * @return void
      */
-    public function testPermissionsFlags($ymlFile, array $expectedCommands)
+    public function testSwitchEnvironmentSuccess($ymlFile, array $expectedCommands)
     {
         $application = new MageApplicationMockup(__DIR__ . '/../../Resources/' . $ymlFile);
         copy(__DIR__ . '/../../Fixtures/LocalConfiguration.test.php', '/tmp/LocalConfiguration.test.php');
+        copy(__DIR__ . '/../../Fixtures/LocalConfiguration.test.php', '/tmp/LocalConfiguration.php');
         if (!is_dir('/tmp/typo3conf')) {
             mkdir('/tmp/typo3conf', 0777, true);
         }
-        copy(__DIR__ . '/../../Fixtures/LocalConfiguration.test.php', '//tmp/typo3conf/LocalConfiguration.php');
+        copy(__DIR__ . '/../../Fixtures/LocalConfiguration.test.php', '/tmp/typo3conf/LocalConfiguration.php');
 
         /** @var AbstractCommand $command */
         $command = $application->find('deploy');
@@ -84,5 +86,43 @@ class SwitchTaskTest extends TestCase
         }
 
         $this->assertEquals(0, $tester->getStatusCode());
+    }
+
+    /**
+     * testSwitchEnvironmentFail
+     *
+     * @dataProvider switchEnvironmentDataProvider
+     * @test
+     * @param string $ymlFile
+     * @param array $expectedCommands
+     * @return void
+     */
+    public function testSwitchEnvironmentFail($ymlFile, array $expectedCommands)
+    {
+        $application = new MageApplicationMockup(__DIR__ . '/../../Resources/' . $ymlFile);
+        if (file_exists('/tmp/LocalConfiguration.test.php')) {
+            unlink('/tmp/LocalConfiguration.test.php');
+        }
+
+        /** @var AbstractCommand $command */
+        $command = $application->find('deploy');
+        $this->assertTrue($command instanceof DeployCommand);
+
+        $tester = new CommandTester($command);
+        $tester->execute(['command' => $command->getName(), 'environment' => 'test']);
+
+        $ranCommands = $application->getRuntime()->getRanCommands();
+
+        // Check Generated Commands
+        $begin = null;
+        foreach ($expectedCommands as $command) {
+            $begin = is_null($begin) ? array_search($command, $ranCommands) : $begin;
+            if (!empty($ranCommands[$begin])) {
+                $this->assertEquals($command, $ranCommands[$begin]);
+            }
+            $begin++;
+        }
+
+        $this->assertEquals(7, $tester->getStatusCode());
     }
 }
