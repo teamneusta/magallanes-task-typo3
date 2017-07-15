@@ -1,0 +1,17 @@
+magephp:
+    log_dir: /tmp
+    typo3:
+      web-dir: /tmp
+      environment-folder: /tmp
+    environments:
+        test:
+            user: tester
+            host_path: /var/www/test
+            exclude:
+                - ./var/cache/*
+                - ./var/log/*
+                - ./web/app_dev.php
+            hosts:
+                - testhost
+            pre-deploy:
+                - 'TeamNeusta\Magallanes\Task\TYPO3\Environment\SwitchTask'
