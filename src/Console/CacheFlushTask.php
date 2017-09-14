@@ -48,7 +48,7 @@ class CacheFlushTask extends AbstractConsoleTask
         );
         $command = sprintf(
             $this->getConsoleCommand('cache:flush', $options).'%s',
-            !empty($options['force-flush-cache']) ? 'true' : ''
+            !empty($options['force-flush-cache']) ? '--force' : ''
         );
 
         return $this->executeCommand($command);

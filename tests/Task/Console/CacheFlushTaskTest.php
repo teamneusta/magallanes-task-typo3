@@ -46,7 +46,7 @@ class CacheFlushTaskTest extends TestCase
                 'yaml'     => 'consoleCacheFlushForce.yml',
                 'expected' => [
                     'rsync -e "ssh -p 22 -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" -avz --exclude=.git --exclude=./var/cache/* --exclude=./var/log/* --exclude=./web/app_dev.php ./ tester@testhost:/var/www/test',
-                    'ssh -p 22 -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no tester@testhost "cd /var/www/test && vendor/bin/typo3cms cache:flush true"'
+                    'ssh -p 22 -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no tester@testhost "cd /var/www/test && vendor/bin/typo3cms cache:flush --force"'
                 ]
             ],
             'cache flush custom console path'       => [
